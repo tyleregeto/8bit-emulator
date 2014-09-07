@@ -1,0 +1,17 @@
+
+html, body {
+	margin: 5px;
+	padding: 0;
+}
+
+h1 {
+	font-size: 12px;
+}
+
+.instruction-card {
+	padding: 10px;
+	background: #cccccc;
+	position: absolute;
+	top:0;
+	right: 20px;
+}
