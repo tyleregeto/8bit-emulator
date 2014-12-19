@@ -20,7 +20,7 @@ Comments
 -----------------
 Comments are indicated by a `#` sign. The pound sign must be the first charatcer in the line (white space is trimmed). There are no block comments.
 
-```
+```asm
 # this a comment
 MOV %ry %rx # this is an _invalid_ comment, comments must begin the line
 ```
@@ -29,7 +29,7 @@ Numbers
 -----------------
 Numbers are always specified in hexidecimal, prefixed by `0x`. Numbers can be 8 or 16 bits depending on the context, but 8 bit is the most common.
 
-```
+```asm
 # a 8 bit number
 0x01
 # a 16 bit number 
@@ -46,14 +46,14 @@ $0xFF01 is invalid because it is over 8 bits. The compiler will throw an error.
 
 *Register values* are always prefixed with `%`. There are two general purpose registers, `%rx` and `%ry`. They are case in-sensitive. Registers can store up to 16 bits.
 
-```
+```asm
 # example using a register value
 MOV $0xFF %rx
 ```
 
 *Memory addresses* have no prefix, and are always specified in hexidecimal. Addresses can be either 8 bit or 16 bit values, the compiler will optimize memory based on which is used.
 
-```
+```asm
 # Example of moving the literal value 0x01 into the memory location 0xF0. Once compiled this memory address takes up 8 bits.
 MOV $0x01 0xF0
 
@@ -70,7 +70,7 @@ Named addresses
 
 Named address are useful for controlling the flow of an application. Combined with the JMP instruction, you can jump to a different position in the code execution.
 
-```
+```asm
 # The assertion that 1 == 2 never runs, the line is skipped over.
 JMP .loop
 ASR $0x01 $0x02
@@ -79,13 +79,13 @@ ASR $0x01 $0x02
 
 Named memory addresses do not translate into a machine instruction during compilation. They are a compile time value only. This means that the following two code examples are exactly equvilent once translated into machine language.
 
-```
+```asm
 ASR 0xFF 0xFF
 .foo
 ASR 0xFF 0xFF
 ```
 And
-```
+```asm
 ASR 0xFF 0xFF
 ASR 0xFF 0xFF
 ```
@@ -96,7 +96,7 @@ The *JMP* (jump) instruction can be used to control the execution of code. JMP t
 
 JMP is almost always used in conjunction with *named memory addresses*.
 
-```
+```asm
 # JMP moves code execution to .bar declared below. The portion of the program contained between .foo and .bar will never execute.
 JMP .bar
 
@@ -118,7 +118,7 @@ The assembly instruction set includes two assert instructions, these are for gen
 
 *ASR* asserts the a value is true. It takes two arguments, whose values are compared against each other numerically. The first argument can be a literal, register, or address. The second argument literal. Literals can be 8 or 16 bit in either argument.
 
-```
+```asm
 # assert that 1 is equal to itself
 ASR $0x01 $0x01
 
@@ -134,7 +134,7 @@ ASR 0x00FF $0x01
 
 *ASN* assert that a value is _not_ true. Its argument rules are the same as *ASR*.
 
-```
+```asm
 # assert that 1 is not equal to 2
 ASN $0x01 $0x02
 ```
@@ -147,7 +147,7 @@ There is a small set of logging instructions useful for debug purposes. You can 
 
 The max length of a string literal is 255 characters.
 
-```jav
+```asm
 # logs the string 'Hello, world' to the browser console
 LGS Hello, world
 ```
