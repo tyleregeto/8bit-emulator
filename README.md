@@ -1,7 +1,7 @@
 A 8 bit computer emulator, in JS
 =============
 
-This is very much a work in progress.
+This is a work in progress.
 
 Memory Layout
 -----------------
@@ -70,7 +70,7 @@ Named address are useful for controlling the flow of an application. Combined wi
 ```
 # The assertion that 1 == 2 never runs, the line is skipped over.
 JMP .loop
-ASR $0x01 $0x01
+ASR $0x01 $0x02
 .loop
 ```
 
@@ -107,7 +107,7 @@ JMP .bar
 
 MOV
 ------------------
-
+TODO, these are implemented, just need to document
 
 Asserts
 -----------------------
