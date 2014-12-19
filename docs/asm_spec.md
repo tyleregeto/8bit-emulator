@@ -2,16 +2,16 @@
 Memory Layout
 -----------------
 
-0x00 is a reserved empty address. It has no meaning.
-0x01 Contains the address of the last call to JSR + 1 instruction. RET uses this value.
-0x02 contains the result of CMP
-0x03-0x003F reserved for flags
-0x40-0x009F is reservered for native font graphics (0x0040 is 'A', 0x0041 is 'B')
-0xA0-0x1FE0 is screen memory. Each bit is an on/off pixel. This is 8000 bytes long, 64000 pixels
+0x00 is a reserved empty address. It has no meaning.  
+0x01 Contains the address of the last call to JSR + 1 instruction. RET uses this value.  
+0x02 contains the result of CMP  
+0x03-0x003F reserved for flags  
+0x40-0x009F is reservered for native font graphics (0x0040 is 'A', 0x0041 is 'B')  
+0xA0-0x1FE0 is screen memory. Each bit is an on/off pixel. This is 8000 bytes long, 64000 pixels  
 
 Comments
 -----------------
-Comments are indicated by a `#` sign. The pund sign must be the first charatcer in the line. There are no block comments.
+Comments are indicated by a `#` sign. The pound sign must be the first charatcer in the line (white space is trimmed). There are no block comments.
 
 ```
 # this a comment
@@ -144,5 +144,3 @@ The max length of a string literal is 255 characters.
 # logs the string 'Hello, world' to the browser console
 LGS Hello, world
 ```
-
-# this is 
