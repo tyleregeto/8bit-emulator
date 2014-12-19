@@ -13,6 +13,9 @@ Memory Layout
 0x40-0x009F is reservered for native font graphics (0x0040 is 'A', 0x0041 is 'B')  
 0xA0-0x1FE0 is screen memory. Each bit is an on/off pixel. This is 8000 bytes long, 64000 pixels  
 
+The Assembly Language Spec
+=============
+
 Comments
 -----------------
 Comments are indicated by a `#` sign. The pound sign must be the first charatcer in the line (white space is trimmed). There are no block comments.
