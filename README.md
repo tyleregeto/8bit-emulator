@@ -6,42 +6,42 @@ This is a work in progress.
 Memory Layout
 -----------------
 
-0x00 is a reserved empty address. It has no meaning.  
-0x01 Contains the address of the last call to JSR + 1 instruction. RET uses this value.  
-0x02 contains the result of CMP  
-0x03-0x003F reserved for flags  
-0x40-0x009F is reservered for native font graphics (0x0040 is 'A', 0x0041 is 'B')  
-0xA0-0x1FE0 is screen memory. Each bit is an on/off pixel. This is 8000 bytes long, 64000 pixels  
+0x00 is a reserved empty address. It has no meaning. \
+0x01 contains the address of the last call to JSR + 1 instruction. RET  uses this value. \
+0x02 contains the result of CMP. \
+0x03-0x003F is reserved for flags. \
+0x40-0x009F is reserved for native font graphics (0x0040 is 'A', 0x0041 is 'B'). \
+0xA0-0x1FE0 is screen memory. Each bit is an on/off pixel. This is 8000 bytes long, 64000 pixels.
 
 The Assembly Language Spec
 =============
 
 Comments
 -----------------
-Comments are indicated by a `#` sign. The pound sign must be the first charatcer in the line (white space is trimmed). There are no block comments.
+Comments are indicated by a `#` sign. The pound sign must be the first character in the line (white space is trimmed). There are no block comments.
 
 ```asm
-# this a comment
+# this is a comment
 MOV %ry %rx # this is an _invalid_ comment, comments must begin the line
 ```
 
 Numbers
 -----------------
-Numbers are always specified in hexidecimal, prefixed by `0x`. Numbers can be 8 or 16 bits depending on the context, but 8 bit is the most common.
+Numbers are always specified in hexadecimal, prefixed by `0x`. Numbers can be 8 or 16 bits depending on the context, but 8 bit is the most common.
 
 ```asm
 # a 8 bit number
 0x01
-# a 16 bit number 
+# a 16 bit number
 0xFF00
 ```
 
 Values
 -----------------
-*Literal values* are always prefixed with a `$` sign, and specified it HEX. Values are always 8 bits long. 
+*Literal values* are always prefixed with a `$` sign, and specified in HEX. Values are always 8 bits long.
 
-$0x01 
-$0xFF
+$0x01 is valid \
+$0xFF is valid \
 $0xFF01 is invalid because it is over 8 bits. The compiler will throw an error.
 
 *Register values* are always prefixed with `%`. There are two general purpose registers, `%rx` and `%ry`. They are case in-sensitive. Registers can store up to 16 bits.
@@ -51,7 +51,7 @@ $0xFF01 is invalid because it is over 8 bits. The compiler will throw an error.
 MOV $0xFF %rx
 ```
 
-*Memory addresses* have no prefix, and are always specified in hexidecimal. Addresses can be either 8 bit or 16 bit values, the compiler will optimize memory based on which is used.
+*Memory addresses* have no prefix, and are always specified in hexadecimal. Addresses can be either 8 bit or 16 bit values, the compiler will optimize memory based on which one is used.
 
 ```asm
 # Example of moving the literal value 0x01 into the memory location 0xF0. Once compiled this memory address takes up 8 bits.
@@ -60,7 +60,7 @@ MOV $0x01 0xF0
 # Example of a 16 bit memory address
 MOV $0x01 0xFF01
 
-# Here the address is specified as 16 bit, but the compiler optimizes it a compile time, it only takes up 8 bits.
+# Here the address is specified as 16 bit, but the compiler optimizes it at compile time to only take up 8 bits.
 MOV $0x01 0x00FF
 ```
 
