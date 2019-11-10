@@ -66,9 +66,9 @@ MOV $0x01 0x00FF
 
 Named addresses
 ------------------
-*Named addresses* are a special type of value. They are a place holder for a memory address that will be determined at compile time. They are used by the jump and branching instructions. A named address is always relative to a programs start location in memory.
+*Named addresses* are placeholders for memory addresses that will be determined at compile time. Named addresses are always relative to a program's start location in memory.
 
-Named address are useful for controlling the flow of an application. Combined with the JMP instruction, you can jump to a different position in the code execution.
+Named addresses are used by the jump and branching instructions and are useful for controlling the flow of an application. Using a named address with a JMP instruction allows jumping to a different position in the code execution.
 
 ```asm
 # The assertion that 1 == 2 never runs, the line is skipped over.
@@ -77,7 +77,7 @@ ASR $0x01 $0x02
 .loop
 ```
 
-Named memory addresses do not translate into a machine instruction during compilation. They are a compile time value only. This means that the following two code examples are exactly equvilent once translated into machine language.
+Named addresses are compile time values only and do not translate into machine instructions during compilation. For example, the following two code snippets are equivalent once translated into machine language.
 
 ```asm
 ASR 0xFF 0xFF
