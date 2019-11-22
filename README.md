@@ -92,7 +92,7 @@ ASR 0xFF 0xFF
 
 JMP
 ------------------
-The *JMP* (jump) instruction can be used to control the execution of code. JMP takes one argument which is a memory address. This will change the code execution pointer to a different part of the memory and start running the portion of the program that exists there.
+The *JMP* (jump) instruction can be used to control the execution of code. JMP takes a memory address as an argument. JMP will change the code execution pointer to the memory address provided and start running the portion of the program that exists there.
 
 JMP is almost always used in conjunction with *named memory addresses*.
 
@@ -116,7 +116,7 @@ Asserts
 -----------------------
 The assembly instruction set includes two assert instructions, these are for general debugging.
 
-*ASR* asserts the a value is true. It takes two arguments, whose values are compared against each other numerically. The first argument can be a literal, register, or address. The second argument literal. Literals can be 8 or 16 bit in either argument.
+*ASR* takes two arguments, compares the values numerically and asserts that they are equal. The first argument can be a literal, register, or an address. The second argument can only be a literal. A literal argument can be 8 or 16 bit.
 
 ```asm
 # assert that 1 is equal to itself
@@ -132,7 +132,7 @@ ASR %rx $0x01
 ASR 0x00FF $0x01
 ```
 
-*ASN* assert that a value is _not_ true. Its argument rules are the same as *ASR*.
+*ASN* takes two arguments, compares the values numerically and asserts that they are _not_ equal. The first argument can be a literal, register, or an address. The second argument can only be a literal. A literal argument can be 8 or 16 bit.
 
 ```asm
 # assert that 1 is not equal to 2
